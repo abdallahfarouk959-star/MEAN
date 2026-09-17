@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الزتونه</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap');
+        
+        body, html {
+            font-family: 'Cairo', sans-serif;
+            background-color: #0f172a; 
+            color: #f8fafc;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .slide-container {
+            width: 92%;
+            max-width: 900px;
+            height: 85vh;
+            background: #1e293b;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            padding-bottom: 75px; 
+            border: 1px solid #334155;
+        }
+
+        .slide {
+            display: none;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            overflow-y: auto; 
+            height: 100%;
+            padding: 2rem 1.5rem;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .slide.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .slide-title { font-size: clamp(1.6rem, 4vw, 2.3rem); color: #38bdf8; font-weight: 800; margin-bottom: 1.5rem; text-align: center; border-bottom: 3px solid #38bdf8; padding-bottom: 0.5rem; width: 100%;}
+        
+        .explanation-card {
+            background-color: #334155;
+            padding: 1.5rem;
+            border-radius: 12px;
+            width: 100%;
+            margin-bottom: 2rem;
+            border-right: 5px solid #fbbf24;
+        }
+        .explanation-card h3 { color: #fbbf24; font-weight: 700; font-size: 1.3rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 8px;}
+        .explanation-card p { font-size: 1.1rem; line-height: 1.8; color: #f1f5f9; }
+
+        .questions-section { width: 100%; }
+        .questions-section h3 { color: #10b981; font-weight: 700; font-size: 1.3rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 8px;}
+        
+        .qa-box {
+            background-color: #0f172a;
+            border-right: 4px solid #10b981;
+            padding: 1.2rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            border: 1px solid #1e293b;
+        }
+        
+        .q-text { font-weight: 700; color: #34d399; margin-bottom: 0.5rem; font-size: 1.1rem;}
+        .a-text { color: #cbd5e1; font-size: 1rem; line-height: 1.6;}
+        
+        /* علامة للأسئلة المتسربة */
+        .real-q-badge {
+            background-color: #ef4444; /* أحمر */
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            margin-right: 8px;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .highlight { color: #fcd34d; font-weight: bold; }
+
+        .controls {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            background-color: #0f172a;
+            border-top: 1px solid #334155;
+            border-radius: 0 0 16px 16px;
+        }
+
+        button {
+            background-color: #38bdf8;
+            color: #0f172a;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        button:hover:not(:disabled) { background-color: #0284c7; color: white;}
+        button:disabled { background-color: #334155; color: #64748b; cursor: not-allowed; }
+
+        .progress-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #fbbf24, #38bdf8, #10b981, #ef4444);
+            transition: width 0.3s ease;
+            border-radius: 16px 16px 0 0;
+        }
+        
+        .slide::-webkit-scrollbar { width: 6px; }
+        .slide::-webkit-scrollbar-track { background: transparent; }
+        .slide::-webkit-scrollbar-thumb { background: #475569; border-radius: 8px; }
+    </style>
+</head>
+<body>
+
+    <div class="slide-container">
+        <div id="progressBar" class="progress-bar" style="width: 10%;"></div>
+
+        <!-- Slide 1: Intro -->
+        <div class="slide active" id="slide-1" style="justify-content: center; text-align: center;">
+            <span style="background: #ef4444; color: white; padding: 4px 12px; border-radius: 20px; font-weight: bold; margin-bottom: 15px; font-size: 0.9rem;">تحديث: تم إضافة تسريبات الجروبات (2024)</span>
+            <h1 class="slide-title" style="border:none;">دليل الـ MEAN Stack بالعامية 🚀</h1>
+            <p style="font-size: 1.2rem; color: #94a3b8; max-width: 600px; line-height: 1.7;">بص يا سيدي، دي الخلاصة. جمعنالك "الحدوتة" اللي هتفهمك التراك، ومعاها <span class="highlight">الأسئلة الحقيقية اللي بتيجي بالنص</span> من جروبات الفيس بوك وجلاس دور للناس اللي امتحنت في NTI.</p>
+        </div>
+
+        <!-- Slide 2: What is Front-end -->
+        <div class="slide" id="slide-2">
+            <h1 class="slide-title">1️⃣ يعني إيه Front-end أصلاً؟</h1>
+            
+            <div class="explanation-card">
+                <h3>💡 الشرح بالبلدي:</h3>
+                <p>تخيل إن الموقع ده عبارة عن "مطعم". الفرونت إند هو الديكور، الترابيزات، والمنيو اللي الزبون بيتعامل معاها.<br>يعني ببساطة: <strong>هو أي حاجة اليوزر بيشوفها بعينه وبيتفاعل معاها على الشاشة.</strong> وعلشان نبني الديكور ده بنحتاج (HTML، CSS، و JavaScript).</p>
+            </div>
+            
+            <div class="questions-section">
+                <h3>🎯 سؤال من الإنترفيوهات:</h3>
+                <div class="qa-box">
+                    <div class="q-text">❓ إيه اختصار كلمة HTML؟ <span class="real-q-badge">مُسرب</span></div>
+                    <div class="a-text">اختصار لـ <span class="highlight">Hyper Text Markup Language</span>. (وهي لغة هيكلة وتوصيف مش لغة برمجة).</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: HTML -->
+        <div class="slide" id="slide-3">
+            <h1 class="slide-title">2️⃣ الـ HTML (الهيكل العظمي)</h1>
+            
+            <div class="explanation-card">
+                <h3>💡 الشرح بالبلدي:</h3>
+                <p>الـ HTML هي طوب العمارة قبل المحارة. بيها بنقول للبراوزر: "حط هنا صورة"، "ده عنوان كبير"، "ده زرار".</p>
+            </div>
+            
+            <div class="questions-section">
+                <h3>🎯 أسئلة الإنترفيو المتوقعة:</h3>
+                <div class="qa-box">
+                    <div class="q-text">❓ إيه الفرق بين id و class؟</div>
+                    <div class="a-text">الـ <span class="highlight">id</span> لازم يكون فريد (Unique) لعنصر واحد بس. لكن الـ <span class="highlight">class</span> ممكن أديه لأكتر من عنصر عشان أنسقهم كلهم بنفس الشكل في الـ CSS.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: CSS -->
+        <div class="slide" id="slide-4">
+            <h1 class="slide-title">3️⃣ الـ CSS (الدهان والشياكة)</h1>
+            
+            <div class="explanation-card">
+                <h3>💡 الشرح بالبلدي:</h3>
+                <p>بييجي دور الـ CSS عشان يعمل المحارة والدهان والألوان ويظبط المسافات ويخلي الموقع "ريسبونسف".</p>
+            </div>
+            
+            <div class="questions-section">
+                <h3>🎯 أسئلة حقيقية من جروبات الدفعة:</h3>
+                <div class="qa-box">
+                    <div class="q-text">❓ إيه الفرق بين absolute و relative في الـ Position؟ <span class="real-q-badge">مُسرب</span></div>
+                    <div class="a-text"><span class="highlight">Relative:</span> بيحرك العنصر بالنسبة لمكانه الأصلي (ومكانه بيفضل محجوز).<br><span class="highlight">Absolute:</span> بيشيل العنصر من مسار الصفحة خالص وبيتحرك بالنسبة لأقرب أب واخد Position (غير الـ static).</div>
+                </div>
+                <div class="qa-box">
+                    <div class="q-text">❓ ما هو الـ Flexbox؟ <span class="real-q-badge">مُسرب</span></div>
+                    <div class="a-text">طريقة (Layout module) بتسهل جداً ترتيب العناصر جنب بعض أو تحت بعض وتوزيع المسافات بينهم بشكل مرن، حلت مشاكل الـ Float القديمة.</div>
+                </div>
+                <div class="qa-box">
+                    <div class="q-text">❓ إيه الفرق بين inline و inline-block؟ <span class="real-q-badge">مُسرب</span></div>
+                    <div class="a-text">الاتنين بيجوا جنب بعض في نفس السطر. بس الـ <span class="highlight">inline</span> مابيقبلش نحددله عرض (width) أو طول (height) زي تاج &lt;span&gt;. أما الـ <span class="highlight">inline-block</span> بييجي جنب اللي جنبه بس يقبل نحددله مقاسات.</div>
+                </div>
+                <div class="qa-box">
+                    <div class="q-text">❓ الفرق بين margin و padding؟ <span class="real-q-badge">مُسرب</span></div>
+                    <div class="a-text">الـ <span class="highlight">padding</span> هي المسافة من جوه حدود العنصر. الـ <span class="highlight">margin</span> هي المسافة من بره العنصر (بتبعده عن اللي حواليه).</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: JavaScript -->
+        <div class="slide" id="slide-5">
+            <h1 class="slide-title">4️⃣ الـ JavaScript (الكهربا والروح)</h1>
+            
+            <div class="explanation-card">
+                <h3>💡 الشرح بالبلدي:</h3>
+                <p>الموقع من غير JS زي المطعم من غير جرسون. الـ JS هي لغة البرمجة اللي بتخلي الموقع يشتغل ويتفاعل. <span class="highlight">ودي أهم حاجة في الإنترفيو لأن التراك كله مبني عليها!</span></p>
+            </div>
+            
+            <div class="questions-section">
+                <h3>🎯 أسئلة حقيقية (أكتر جزء بيتسأل فيه):</h3>
+                <div class="qa-box">
+                    <div class="q-text">❓ إيه الفرق بين let, var, و const؟ <span class="real-q-badge">مُسرب</span></div>
+                    <div class="a-text"><span class="highlight">var:</span> قديمة و Function Scope (مشاكلها كتير).<br><span class="highlight">let:</span> قيمتها ممكن تتغير وهي Block Scope (الأفضل حالياً).<br><span class="highlight">const:</span> للثوابت اللي قيمتها مش هتتغير خالص.</div>
+                </div>
+                <div class="qa-box">
+                    <div class="q-text">❓ إيه هو الـ Hoisting؟ <span class="real-q-badge">مُسرب</span></div>
+                    <div class="a-text">هو سلوك في الجافاسكريبت بيرفع "التعريفات" (Declarations) بتاعة المتغيرات والدوال لأعلى الملف قبل ما الكود يشتغل (وده بيحصل مع var بس، لكن let و const بيعملوا Reference Error).</div>
+                </div>
+                <div class="qa-box">
+                    <div class="q-text">❓ إيه الفرق بين push, pop, shift, unshift؟ <span class="real-q-badge">مُسرب</span></div>
+                    <div class="a-text">كلهم بيتعاملوا مع الـ Arrays:<br>- <span class="highlight">push:</span> بيضيف عنصر في الآخِر.<br>- <span class="highlight">pop:</span> بيمسح عنصر من الآخِر.<br>- <span class="highlight">unshift:</span> بيضيف عنصر في الأول.<br>- <span class="highlight">shift:</span> بيمسح عنصر من الأول.</div>
+                </div>
+                <div class="qa-box">
+                    <div class="q-text">❓ إيه الفرق بين slice و splice؟ <span class="real-q-badge">مُسرب</span></div>
+                    <div class="a-text"><span class="highlight">slice:</span> بتاخد "نسخة" من جزء من الـ Array ومابتأثرش على الأصلية.<br><span class="highlight">splice:</span> بتقطع وتعدل في الـ Array الأصلية نفسها (بتضيف أو تمسح).</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Frameworks Intro -->
+        <div class="slide" id="slide-6">
+            <h1 class="slide-title">5️⃣ إيه هما الـ Frameworks بتوعنا؟</h1>
+            
+            <div class="explanation-card">
+                <h3>💡 الشرح بالبلدي:</h3>
+                <p>بدل ما نكتب كود من الصفر، بنستخدم (أُطر عمل) جاهزة. تراك <span class="highlight">M-E-A-N</span> اختصار لـ 4 أدوات شغالين بالـ JS:</p>
+                <ul style="margin-top: 10px; margin-right: 20px; color: #cbd5e1; list-style-type: disc;">
+                    <li><strong>(M) MongoDB:</strong> الداتا بيز.</li>
+                    <li><strong>(E) Express.js:</strong> بيسهل عمل الباك إند.</li>
+                    <li><strong>(A) Angular:</strong> فريم وورك الفرونت إند.</li>
+                    <li><strong>(N) Node.js:</strong> بيئة تشغيل الـ JS في الباك إند.</li>
+                </ul>
+            </div>
+            
+            <div class="questions-section">
+                <div class="qa-box">
+                    <div class="q-text">❓ إيه الفرق بين Angular و Node.js؟ <span class="real-q-badge">مُسرب</span></div>
+                    <div class="a-text"><span class="highlight">Angular:</span> بيشتغل عند اليوزر (Front-end) عشان يبني واجهة الموقع.<br><span class="highlight">Node.js:</span> بيشتغل على السيرفر (Back-end) عشان يستقبل الطلبات ويكلم الداتا بيز.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Advanced (Angular & Node) -->
+        <div class="slide" id="slide-7">
+            <h1 class="slide-title">6️⃣ Angular & Node (متقدم)</h1>
+            
+            <div class="explanation-card">
+                <h3>💡 الشرح بالبلدي:</h3>
+                <p>أنجولار بيقسم الموقع لـ Components (مكعبات) وبيخلي الموقع (SPA) يعني صفحة واحدة مابتفصلش. و Node.js بيخلينا نعمل سيرفر قوي وسريع.</p>
+            </div>
+            
+            <div class="questions-section">
+                <h3>🎯 أسئلة للمستوى المتقدم:</h3>
+                <div class="qa-box">
+                    <div class="q-text">❓ إزاي بتعالج الـ Performance لو الداتا كبيرة في Angular؟</div>
+                    <div class="a-text">بستخدم حاجات زي الـ <span class="highlight">Lazy Loading</span> (تحميل الصفحات وقت الحاجة بس) وبظبط الـ Change Detection.</div>
+                </div>
+                <div class="qa-box">
+                    <div class="q-text">❓ إزاي نعالج مشكلة بطء السيرفر (Node.js) وقت الضغط؟</div>
+                    <div class="a-text">عن طريق استخدام <span class="highlight">Caching</span> (زي Redis) عشان نحفظ الداتا المتكررة، ونعمل Load Balancing لتوزيع الضغط.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Database & OOP -->
+        <div class="slide" id="slide-8">
+            <h1 class="slide-title">7️⃣ الداتا بيز (MongoDB) و الـ OOP</h1>
+            
+            <div class="explanation-card">
+                <h3>💡 الشرح بالبلدي:</h3>
+                <p>MongoDB قاعدة بيانات NoSQL ذكية جداً ومرنة، بتحفظ الداتا كأنها ملفات (Documents) مش جداول معقدة.</p>
+            </div>
+            
+            <div class="questions-section">
+                <h3>🎯 أسئلة الإنترفيو:</h3>
+                <div class="qa-box">
+                    <div class="q-text">❓ اتسألت في الـ OOP، يعني إيه؟ <span class="real-q-badge">مُسرب</span></div>
+                    <div class="a-text">Object-Oriented Programming (البرمجة الكائنية): بنظم كودي في شكل (Classes) و (Objects). أهم مبادئها: الوراثة (Inheritance)، التغليف (Encapsulation)، وتعدد الأشكال (Polymorphism). ده بيخلي الكود منظم وسهل يتعدل.</div>
+                </div>
+                <div class="qa-box">
+                    <div class="q-text">❓ إيه الفرق بين SQL و NoSQL؟ <span class="real-q-badge">مُسرب</span></div>
+                    <div class="a-text"><span class="highlight">SQL:</span> جداول ثابتة ومترابطة (Relational).<br><span class="highlight">NoSQL (MongoDB):</span> ملفات مرنة (Documents) سريعة التوسع.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 9: Back-end Details & Security -->
+        <div class="slide" id="slide-9">
+            <h1 class="slide-title">8️⃣ الباك إند (الأمان والتفاصيل)</h1>
+            
+            <div class="explanation-card">
+                <h3>💡 الشرح بالبلدي:</h3>
+                <p>الباك إند هو "مطبخ المطعم". بيستقبل الطلب (Request)، يكلم الداتا بيز، ويرجع الرد. ولازم المطبخ ده يكون متأمن كويس!</p>
+            </div>
+            
+            <div class="questions-section">
+                <h3>🎯 أسئلة الإنترفيو:</h3>
+                <div class="qa-box">
+                    <div class="q-text">❓ إزاي بتأمن الأبلكيشن بتاعك؟ (Security)</div>
+                    <div class="a-text">بشفر الباسوردات بـ (Bcrypt)، وبستخدم <span class="highlight">JWT Token</span> للـ Login، وبعمل Validation لأي داتا جيالي من الفرونت إند عشان أمنع الهاكرز.</div>
+                </div>
+                <div class="qa-box">
+                    <div class="q-text">❓ إيه هو الـ DOM؟ <span class="real-q-badge">مُسرب</span></div>
+                    <div class="a-text">الـ Document Object Model. هو الشجرة اللي البراوزر بيبنيها لملف الـ HTML، وعن طريق الـ JS بنقدر نمسك فروع الشجرة دي (العناصر) ونغير ألوانها أو محتواها.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 10: Outro & Tips -->
+        <div class="slide" id="slide-10" style="justify-content: center; text-align: center;">
+            <h1 style="font-size: clamp(2rem, 5vw, 3rem); color: #10b981; margin-bottom: 20px;">نصيحة أخيرة للإنترفيو 💡</h1>
+            
+            <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px; max-width: 700px; text-align: right; margin-top: 20px;">
+                <ul style="color: #cbd5e1; font-size: 1.2rem; line-height: 1.8; list-style: none; padding:0;">
+                    <li style="margin-bottom: 10px;">✅ <strong>محدش طالب إجابة نموذجية:</strong> زي ما الباشمهندس قال في الكومنتات، المهم تبين إنك فاهم وإيدك مشيت في الكود.</li>
+                    <li style="margin-bottom: 10px;">✅ <strong>الأسئلة بتختلف:</strong> الإنترفيور ممكن يسألك حسب كلامك معاه وحسب مستواك (Dynamic).</li>
+                    <li style="margin-bottom: 10px;">✅ <strong>أهم حاجة الـ JS:</strong> المنحة دي مبنية على الجافاسكريبت، ركز جداً في أساسياتها ومفاهيمها.</li>
+                    <li>✅ <strong>لو مش عارف سؤال:</strong> قول عادي "أنا اتعاملت معاها بس مش متذكر التفصيل بالظبط، ومتحمس أتعلمها أكتر في المنحة".</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Navigation Controls -->
+        <div class="controls">
+            <button id="prevBtn" onclick="changeSlide(-1)" disabled>السابق</button>
+            <span id="slideCounter" style="color: #94a3b8; font-weight: bold; font-size: 1.1rem;">1 / 10</span>
+            <button id="nextBtn" onclick="changeSlide(1)">التالي</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 10;
+
+        function changeSlide(direction) {
+            document.getElementById(`slide-${currentSlide}`).classList.remove('active');
+            currentSlide += direction;
+            document.getElementById(`slide-${currentSlide}`).classList.add('active');
+            
+            document.getElementById('prevBtn').disabled = currentSlide === 1;
+            document.getElementById('nextBtn').disabled = currentSlide === totalSlides;
+            document.getElementById('slideCounter').innerText = `${currentSlide} / ${totalSlides}`;
+            
+            const progress = (currentSlide / totalSlides) * 100;
+            document.getElementById('progressBar').style.width = `${progress}%`;
+            
+            document.getElementById(`slide-${currentSlide}`).scrollTop = 0;
+        }
+    </script>
+</body>
+</html>
