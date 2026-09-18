@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الزتونه</title>
+    <title>الزتونه - NTI MEAN Stack</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap');
@@ -23,9 +23,9 @@
         }
 
         .slide-container {
-            width: 92%;
-            max-width: 900px;
-            height: 85vh;
+            width: 95%;
+            max-width: 1000px;
+            height: 88vh;
             background: #1e293b;
             border-radius: 16px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
@@ -63,14 +63,14 @@
             padding: 1.5rem;
             border-radius: 12px;
             width: 100%;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             border-right: 5px solid #fbbf24;
         }
         .explanation-card h3 { color: #fbbf24; font-weight: 700; font-size: 1.3rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 8px;}
-        .explanation-card p { font-size: 1.1rem; line-height: 1.8; color: #f1f5f9; }
+        .explanation-card p { font-size: 1.1rem; line-height: 1.8; color: #f1f5f9; margin-bottom: 0.5rem;}
 
-        .questions-section { width: 100%; }
-        .questions-section h3 { color: #10b981; font-weight: 700; font-size: 1.3rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 8px;}
+        .questions-section { width: 100%; margin-bottom: 1rem;}
+        .questions-section h3 { color: #10b981; font-weight: 700; font-size: 1.3rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 8px; margin-top: 1rem;}
         
         .qa-box {
             background-color: #0f172a;
@@ -86,7 +86,7 @@
         
         /* علامة للأسئلة المتسربة */
         .real-q-badge {
-            background-color: #ef4444; /* أحمر */
+            background-color: #ef4444;
             color: white;
             padding: 2px 8px;
             border-radius: 4px;
@@ -97,6 +97,46 @@
         }
 
         .highlight { color: #fcd34d; font-weight: bold; }
+
+        /* ستايل بنك الأسئلة (الطيات) */
+        details {
+            background-color: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+            padding: 0.75rem 1rem;
+            width: 100%;
+            transition: all 0.3s;
+        }
+        details:hover { border-color: #38bdf8; }
+        summary {
+            font-weight: 700;
+            cursor: pointer;
+            color: #f8fafc;
+            outline: none;
+            font-size: 1rem;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        summary::-webkit-details-marker { display: none; }
+        summary::after {
+            content: '▼';
+            color: #38bdf8;
+            font-size: 0.9rem;
+            transition: transform 0.3s;
+        }
+        details[open] summary::after { transform: rotate(180deg); color: #fbbf24;}
+        details[open] summary { color: #38bdf8; margin-bottom: 0.5rem; }
+        .ans { 
+            color: #cbd5e1; 
+            font-size: 0.95rem; 
+            line-height: 1.6; 
+            padding-right: 1rem; 
+            border-right: 2px solid #38bdf8; 
+            margin-top: 0.5rem;
+        }
 
         .controls {
             position: absolute;
@@ -145,11 +185,11 @@
 <body>
 
     <div class="slide-container">
-        <div id="progressBar" class="progress-bar" style="width: 10%;"></div>
+        <div id="progressBar" class="progress-bar" style="width: 9%;"></div>
 
         <!-- Slide 1: Intro -->
         <div class="slide active" id="slide-1" style="justify-content: center; text-align: center;">
-
+            <h1 class="slide-title" style="border:none; margin-bottom: 0.5rem;">الزتونه</h1>
         </div>
 
         <!-- Slide 2: What is Front-end -->
@@ -158,14 +198,14 @@
             
             <div class="explanation-card">
                 <h3>💡 الشرح بالبلدي:</h3>
-                <p>تخيل إن الموقع ده عبارة عن "مطعم". الفرونت إند هو الديكور، الترابيزات، والمنيو اللي الزبون بيتعامل معاها.<br>يعني ببساطة: <strong>هو أي حاجة اليوزر بيشوفها بعينه وبيتفاعل معاها على الشاشة.</strong> وعلشان نبني الديكور ده بنحتاج (HTML، CSS، و JavaScript).</p>
+                <p>تخيل إن الموقع ده عبارة عن "مطعم". الفرونت إند هو الديكور، الترابيزات، والمنيو اللي الزبون بيتعامل معاها.<br>يعني ببساطة: <strong>هو أي حاجة اليوزر بيشوفها بعينه وبيتفاعل معاها على الشاشة.</strong> وعلشان نبني الديكور ده بنحتاج 3 أساسيات لا غنى عنهم: HTML (للهيكل)، CSS (للديكور)، و JavaScript (للتفاعل).</p>
             </div>
             
             <div class="questions-section">
-                <h3>🎯 سؤال من الإنترفيوهات:</h3>
+                <h3>🎯 سؤال من التسريبات:</h3>
                 <div class="qa-box">
                     <div class="q-text">❓ إيه اختصار كلمة HTML؟ <span class="real-q-badge">مُسرب</span></div>
-                    <div class="a-text">اختصار لـ <span class="highlight">Hyper Text Markup Language</span>. (وهي لغة هيكلة وتوصيف مش لغة برمجة).</div>
+                    <div class="a-text">اختصار لـ <span class="highlight">Hyper Text Markup Language</span>. (وهي لغة هيكلة وتوصيف مش لغة برمجة، يعني مفيهاش شروط ولا Loops).</div>
                 </div>
             </div>
         </div>
@@ -176,15 +216,25 @@
             
             <div class="explanation-card">
                 <h3>💡 الشرح بالبلدي:</h3>
-                <p>الـ HTML هي طوب العمارة قبل المحارة. بيها بنقول للبراوزر: "حط هنا صورة"، "ده عنوان كبير"، "ده زرار".</p>
+                <p>الـ HTML هي طوب العمارة قبل المحارة. بيها بنقول للبراوزر: "حط هنا صورة"، "ده عنوان كبير"، "ده زرار". من غيرها مفيش صفحة ويب أصلاً.</p>
             </div>
             
             <div class="questions-section">
-                <h3>🎯 أسئلة الإنترفيو المتوقعة:</h3>
+                <h3>🎯 تسريبات وأسئلة أساسية:</h3>
                 <div class="qa-box">
-                    <div class="q-text">❓ إيه الفرق بين id و class؟</div>
-                    <div class="a-text">الـ <span class="highlight">id</span> لازم يكون فريد (Unique) لعنصر واحد بس. لكن الـ <span class="highlight">class</span> ممكن أديه لأكتر من عنصر عشان أنسقهم كلهم بنفس الشكل في الـ CSS.</div>
+                    <div class="q-text">❓ إيه الفرق بين id و class؟ <span class="real-q-badge">مُسرب</span></div>
+                    <div class="a-text">الـ <span class="highlight">id</span> لازم يكون فريد (Unique) لعنصر واحد بس في الصفحة (زي رقم البطاقة). لكن الـ <span class="highlight">class</span> ممكن أديه لأكتر من عنصر عشان أنسقهم كلهم بنفس الشكل في الـ CSS.</div>
                 </div>
+                
+                <h3 style="margin-top: 1.5rem;">📚 بنك أسئلة HTML السريعة:</h3>
+                <details><summary>1. الفرق بين HTML4 و HTML5؟</summary><div class="ans">HTML5 أضافت تاجات جديدة للفيديو والصوت (audio/video)، وتاجات الـ Semantic (header/footer)، ودعم أفضل للموبايل.</div></details>
+                <details><summary>2. إيه هي الـ Semantic Tags؟</summary><div class="ans">تاجات ليها معنى بتشرح محتواها للبراوزر ومحركات البحث (زي article, nav, header, footer) بدل استخدام div العادي.</div></details>
+                <details><summary>3. الفرق بين div و span؟</summary><div class="ans">div بياخد سطر كامل (Block-level)، لكن span بياخد مساحة الكلمة بس وبييجي جنب عناصر تانية (Inline).</div></details>
+                <details><summary>4. إيه فايدة الـ DOCTYPE؟</summary><div class="ans">بيعرف البراوزر إصدار الـ HTML المُستخدم في الصفحة (حالياً `<!DOCTYPE html>` يعني HTML5).</div></details>
+                <details><summary>5. إيه هي الـ Meta Tags؟</summary><div class="ans">بيانات عن الصفحة (metadata) بتتحط في الـ head، مهمة جداً لمحركات البحث (SEO) وتظبط الشاشة عالموبايل (viewport).</div></details>
+                <details><summary>6. الفرق بين GET و POST في الـ Forms؟</summary><div class="ans">GET بيبعت الداتا مكشوفة في الـ URL (محدودة الحجم). POST بيبعت الداتا متخفية في الـ Body (آمنة وأكبر للحجم).</div></details>
+                <details><summary>7. إيه هي الـ Void Elements؟</summary><div class="ans">عناصر ملهاش قفلة (Closing Tag) زي `<br>`, `<img>`, `<hr>`, `<input>`.</div></details>
+                <details><summary>8. إيه فايدة الـ alt attribute في الصور؟</summary><div class="ans">نص بديل بيظهر لو الصورة محملتش، ومهم جداً لقارئات الشاشة (Accessibility) للمكفوفين وللـ SEO.</div></details>
             </div>
         </div>
 
@@ -194,159 +244,171 @@
             
             <div class="explanation-card">
                 <h3>💡 الشرح بالبلدي:</h3>
-                <p>بييجي دور الـ CSS عشان يعمل المحارة والدهان والألوان ويظبط المسافات ويخلي الموقع "ريسبونسف".</p>
+                <p>بييجي دور الـ CSS عشان يعمل المحارة والدهان والألوان، يظبط المسافات، ويخلي الموقع "ريسبونسف" (شكله حلو على اللاب والموبايل).</p>
             </div>
             
             <div class="questions-section">
                 <h3>🎯 أسئلة حقيقية من جروبات الدفعة:</h3>
                 <div class="qa-box">
-                    <div class="q-text">❓ إيه الفرق بين absolute و relative في الـ Position؟ <span class="real-q-badge">مُسرب</span></div>
-                    <div class="a-text"><span class="highlight">Relative:</span> بيحرك العنصر بالنسبة لمكانه الأصلي (ومكانه بيفضل محجوز).<br><span class="highlight">Absolute:</span> بيشيل العنصر من مسار الصفحة خالص وبيتحرك بالنسبة لأقرب أب واخد Position (غير الـ static).</div>
-                </div>
-                <div class="qa-box">
-                    <div class="q-text">❓ ما هو الـ Flexbox؟ <span class="real-q-badge">مُسرب</span></div>
-                    <div class="a-text">طريقة (Layout module) بتسهل جداً ترتيب العناصر جنب بعض أو تحت بعض وتوزيع المسافات بينهم بشكل مرن، حلت مشاكل الـ Float القديمة.</div>
+                    <div class="q-text">❓ الفرق بين absolute و relative في الـ Position؟ <span class="real-q-badge">مُسرب</span></div>
+                    <div class="a-text"><span class="highlight">Relative:</span> بيتحرك بالنسبة لمكانه الأصلي (ومكانه بيفضل محجوز).<br><span class="highlight">Absolute:</span> بيشيل العنصر من مسار الصفحة وبيتحرك بالنسبة لأقرب أب واخد Position.</div>
                 </div>
                 <div class="qa-box">
                     <div class="q-text">❓ إيه الفرق بين inline و inline-block؟ <span class="real-q-badge">مُسرب</span></div>
-                    <div class="a-text">الاتنين بيجوا جنب بعض في نفس السطر. بس الـ <span class="highlight">inline</span> مابيقبلش نحددله عرض (width) أو طول (height) زي تاج &lt;span&gt;. أما الـ <span class="highlight">inline-block</span> بييجي جنب اللي جنبه بس يقبل نحددله مقاسات.</div>
+                    <div class="a-text">الاتنين بيجوا جنب بعض. بس الـ <span class="highlight">inline</span> مابيقبلش مقاسات (width/height). أما الـ <span class="highlight">inline-block</span> بيقبل مقاسات عادي.</div>
                 </div>
-                <div class="qa-box">
-                    <div class="q-text">❓ الفرق بين margin و padding؟ <span class="real-q-badge">مُسرب</span></div>
-                    <div class="a-text">الـ <span class="highlight">padding</span> هي المسافة من جوه حدود العنصر. الـ <span class="highlight">margin</span> هي المسافة من بره العنصر (بتبعده عن اللي حواليه).</div>
-                </div>
+
+                <h3 style="margin-top: 1.5rem;">📚 بنك أسئلة CSS السريعة:</h3>
+                <details><summary>1. إيه هو الـ CSS Box Model؟</summary><div class="ans">أي عنصر هو صندوق مكون من: المحتوى -> Padding -> Border -> Margin.</div></details>
+                <details><summary>2. الفرق بين margin و padding؟</summary><div class="ans">Padding هي المسافة الداخلية بين المحتوى وحدود العنصر. Margin هي المسافة الخارجية بتبعد العنصر عن جيرانه.</div></details>
+                <details><summary>3. الفرق بين Flexbox و CSS Grid؟</summary><div class="ans">Flexbox بيقسم العناصر في اتجاه واحد (صف أو عمود). Grid بيقسم العناصر في اتجاهين (صفوف وأعمدة مع بعض).</div></details>
+                <details><summary>4. إيه هو الـ z-index؟</summary><div class="ans">بيتحكم في ترتيب الطبقات (العناصر اللي فوق بعض). الرقم الأكبر بيغطي الأصغر.</div></details>
+                <details><summary>5. إيه هي الـ Media Query؟</summary><div class="ans">أداة بتخلينا نغير الـ CSS بناءً على مقاس الشاشة (عشان نعمل الـ Responsive Design).</div></details>
+                <details><summary>6. الفرق بين visibility: hidden و display: none؟</summary><div class="ans">visibility بيخفي العنصر بس بيسيب مكانه فاضي. display بيشيل العنصر خالص كأنه مش موجود.</div></details>
+                <details><summary>7. إيه هي الـ SCSS/SASS؟</summary><div class="ans">لغات بتخلينا نكتب CSS بطريقة برمجية (فيها متغيرات، دمج، Loops) وبعدين تتحول لـ CSS عادي.</div></details>
             </div>
         </div>
 
-        <!-- Slide 5: JavaScript -->
+        <!-- Slide 5: JavaScript 1 -->
         <div class="slide" id="slide-5">
-            <h1 class="slide-title">4️⃣ الـ JavaScript (الكهربا والروح)</h1>
+            <h1 class="slide-title">4️⃣ الـ JavaScript (الروح) - الجزء الأول</h1>
             
             <div class="explanation-card">
                 <h3>💡 الشرح بالبلدي:</h3>
-                <p>الموقع من غير JS زي المطعم من غير جرسون. الـ JS هي لغة البرمجة اللي بتخلي الموقع يشتغل ويتفاعل. <span class="highlight">ودي أهم حاجة في الإنترفيو لأن التراك كله مبني عليها!</span></p>
+                <p>الموقع من غير JS زي المطعم من غير جرسون بياخد الأوردرات. الـ JS هي لغة البرمجة اللي بتخلي الموقع يتفاعل مع اليوزر. <span class="highlight">ودي أهم حاجة في الإنترفيو لأن المنحة كلها مبنية عليها!</span></p>
             </div>
             
             <div class="questions-section">
                 <h3>🎯 أسئلة حقيقية (أكتر جزء بيتسأل فيه):</h3>
                 <div class="qa-box">
                     <div class="q-text">❓ إيه الفرق بين let, var, و const؟ <span class="real-q-badge">مُسرب</span></div>
-                    <div class="a-text"><span class="highlight">var:</span> قديمة و Function Scope (مشاكلها كتير).<br><span class="highlight">let:</span> قيمتها ممكن تتغير وهي Block Scope (الأفضل حالياً).<br><span class="highlight">const:</span> للثوابت اللي قيمتها مش هتتغير خالص.</div>
+                    <div class="a-text"><span class="highlight">var:</span> قديمة ومشاكلها كتير (Function Scope).<br><span class="highlight">let:</span> قيمتها ممكن تتغير (Block Scope).<br><span class="highlight">const:</span> للثوابت اللي قيمتها مش هتتغير خالص.</div>
                 </div>
                 <div class="qa-box">
-                    <div class="q-text">❓ إيه هو الـ Hoisting؟ <span class="real-q-badge">مُسرب</span></div>
-                    <div class="a-text">هو سلوك في الجافاسكريبت بيرفع "التعريفات" (Declarations) بتاعة المتغيرات والدوال لأعلى الملف قبل ما الكود يشتغل (وده بيحصل مع var بس، لكن let و const بيعملوا Reference Error).</div>
+                    <div class="q-text">❓ إيه هو الـ DOM؟ <span class="real-q-badge">مُسرب</span></div>
+                    <div class="a-text">Document Object Model. البراوزر بيحول الـ HTML لشجرة (كائنات)، والـ JS بتقدر تمسك فروع الشجرة دي عشان تعدل الصفحة.</div>
                 </div>
+
+                <h3 style="margin-top: 1.5rem;">📚 بنك أسئلة JS السريعة (1):</h3>
+                <details><summary>1. إيه هي أنواع البيانات (Data Types)؟</summary><div class="ans">أساسية (String, Number, Boolean, Undefined, Null). ومركبة (Object, Array).</div></details>
+                <details><summary>2. الفرق بين null و undefined؟</summary><div class="ans">undefined: متغير اتعمل بس لسه مخدش قيمة. null: إنت قاصد تخليه "فاضي".</div></details>
+                <details><summary>3. إيه هو الـ Hoisting؟</summary><div class="ans">سلوك بيرفع الـ Declarations (التعريفات بتاعة المتغيرات والدوال) لأعلى الملف قبل التشغيل (بيشتغل مع var).</div></details>
+                <details><summary>4. إيه هو الـ Closure؟</summary><div class="ans">لما دالة تبقى جوه دالة، الدالة الداخلية بتفضل شايفة متغيرات الدالة الخارجية حتى بعد ما الخارجية تخلص.</div></details>
+                <details><summary>5. إيه هو الـ Callback Function؟</summary><div class="ans">دالة بتتبعت جوه دالة تانية كـ Parameter، عشان تشتغل بعد ما الدالة الأساسية تخلص.</div></details>
+                <details><summary>6. الفرق بين == و ===؟</summary><div class="ans">`==` بتقارن القيمة بس. `===` بتقارن القيمة والنوع (ودي الأفضل).</div></details>
+            </div>
+        </div>
+
+        <!-- Slide 6: JavaScript 2 -->
+        <div class="slide" id="slide-6">
+            <h1 class="slide-title">4️⃣ الـ JavaScript - الجزء التاني</h1>
+            
+            <div class="questions-section">
+                <h3>🎯 أسئلة حقيقية (تكملة الـ Arrays):</h3>
                 <div class="qa-box">
                     <div class="q-text">❓ إيه الفرق بين push, pop, shift, unshift؟ <span class="real-q-badge">مُسرب</span></div>
-                    <div class="a-text">كلهم بيتعاملوا مع الـ Arrays:<br>- <span class="highlight">push:</span> بيضيف عنصر في الآخِر.<br>- <span class="highlight">pop:</span> بيمسح عنصر من الآخِر.<br>- <span class="highlight">unshift:</span> بيضيف عنصر في الأول.<br>- <span class="highlight">shift:</span> بيمسح عنصر من الأول.</div>
+                    <div class="a-text">بيتعاملوا مع الـ Arrays: <br><span class="highlight">push:</span> بيضيف في الآخِر. <span class="highlight">pop:</span> بيمسح من الآخِر.<br><span class="highlight">unshift:</span> بيضيف في الأول. <span class="highlight">shift:</span> بيمسح من الأول.</div>
                 </div>
                 <div class="qa-box">
                     <div class="q-text">❓ إيه الفرق بين slice و splice؟ <span class="real-q-badge">مُسرب</span></div>
-                    <div class="a-text"><span class="highlight">slice:</span> بتاخد "نسخة" من جزء من الـ Array ومابتأثرش على الأصلية.<br><span class="highlight">splice:</span> بتقطع وتعدل في الـ Array الأصلية نفسها (بتضيف أو تمسح).</div>
+                    <div class="a-text"><span class="highlight">slice:</span> بتاخد "نسخة" من جزء من الـ Array ومابتأثرش ع الأصل. <span class="highlight">splice:</span> بتقطع وتعدل في الـ Array الأصلية نفسها.</div>
                 </div>
+
+                <h3 style="margin-top: 1.5rem;">📚 بنك أسئلة JS السريعة (2):</h3>
+                <details><summary>7. الفرق بين Sync و Async؟</summary><div class="ans">Sync بينفذ سطر سطر ويستنى. Async بيخلي العمليات الطويلة تشتغل في الخلفية من غير ما يوقف الموقع.</div></details>
+                <details><summary>8. إيه هو Promise؟</summary><div class="ans">وعد بإن عملية Async هتخلص. ليها 3 حالات: Pending (لسه)، Fulfilled (نجحت)، Rejected (فشلت).</div></details>
+                <details><summary>9. إيه هما async و await؟</summary><div class="ans">طريقة حديثة لترتيب الـ Promises، بتخلي كود الـ Async يتكتب ويتقرأ كأنه Sync عادي.</div></details>
+                <details><summary>10. الفرق بين map, filter, reduce؟</summary><div class="ans">map: بتعدل وترجع Array جديدة. filter: بترجع العناصر اللي نجحت في الشرط. reduce: بتجمعناصر الـ Array في قيمة واحدة.</div></details>
+                <details><summary>11. الفرق بين Spread و Rest Operator (...)؟</summary><div class="ans">Spread: بيفرد عناصر الـ Array `[...arr]`. Rest: بيلم العناصر المتبقية ويحطها في Array.</div></details>
+                <details><summary>12. إيه هي الـ Arrow Function؟</summary><div class="ans">طريقة مختصرة `() => {}` وميزتها إن ملهاش `this` خاصة بيها، بتاخد الـ this من اللي براها.</div></details>
+                <details><summary>13. إيه هي الـ Truthy و Falsy Values؟</summary><div class="ans">الـ Falsy هي: (0, "", null, undefined, NaN, false). أي حاجة تانية بتعتبر Truthy في الشروط.</div></details>
+                <details><summary>14. الفرق بين localStorage و sessionStorage؟</summary><div class="ans">localStorage بياناتها مابتتمسحش لو قفلت البراوزر. sessionStorage بتتمسح أول ما تقفل الـ Tab.</div></details>
             </div>
         </div>
 
-        <!-- Slide 6: Frameworks Intro -->
-        <div class="slide" id="slide-6">
-            <h1 class="slide-title">5️⃣ إيه هما الـ Frameworks بتوعنا؟</h1>
+        <!-- Slide 7: All Frameworks Context -->
+        <div class="slide" id="slide-7">
+            <h1 class="slide-title">5️⃣ صورة عامة للـ Frameworks</h1>
             
             <div class="explanation-card">
-                <h3>💡 الشرح بالبلدي:</h3>
-                <p>بدل ما نكتب كود من الصفر، بنستخدم (أُطر عمل) جاهزة. تراك <span class="highlight">M-E-A-N</span> اختصار لـ 4 أدوات شغالين بالـ JS:</p>
-                <ul style="margin-top: 10px; margin-right: 20px; color: #cbd5e1; list-style-type: disc;">
-                    <li><strong>(M) MongoDB:</strong> الداتا بيز.</li>
-                    <li><strong>(E) Express.js:</strong> بيسهل عمل الباك إند.</li>
-                    <li><strong>(A) Angular:</strong> فريم وورك الفرونت إند.</li>
-                    <li><strong>(N) Node.js:</strong> بيئة تشغيل الـ JS في الباك إند.</li>
+                <h3>💡 الشرح بالبلدي (نظرة عامة):</h3>
+                <p>عشان نعمل موقع كبير مش بنكتب كود من الصفر (Vanilla JS)، بنستخدم أُطر عمل (Frameworks/Libraries) بتسهل علينا.</p>
+                <p style="color:#fcd34d; margin-top: 10px; font-weight: bold;">بالنسبة للفرونت إند (Front-end)، السوق فيه 3 وحوش كبار:</p>
+                <ul style="margin-right: 20px; color: #cbd5e1; list-style-type: disc; line-height: 1.8;">
+                    <li><strong>React:</strong> مكتبة من (فيسبوك)، مرنة جداً ومشهورة أوي بس بتخليك تعتمد على مكاتب خارجية كتير.</li>
+                    <li><strong>Vue.js:</strong> خفيف جداً وسهل في التعلم، واخد حلاوة الرياكت والأنجولار.</li>
+                    <li><strong>Angular:</strong> من (جوجل)، فريم وورك "متكامل"، فيه كل حاجة جواه، منظم جداً للشركات الكبيرة <span class="highlight">(وده اللي هندرسه في المنحة)</span>.</li>
                 </ul>
             </div>
-            
-            <div class="questions-section">
-                <div class="qa-box">
-                    <div class="q-text">❓ إيه الفرق بين Angular و Node.js؟ <span class="real-q-badge">مُسرب</span></div>
-                    <div class="a-text"><span class="highlight">Angular:</span> بيشتغل عند اليوزر (Front-end) عشان يبني واجهة الموقع.<br><span class="highlight">Node.js:</span> بيشتغل على السيرفر (Back-end) عشان يستقبل الطلبات ويكلم الداتا بيز.</div>
-                </div>
-            </div>
         </div>
 
-        <!-- Slide 7: Advanced (Angular & Node) -->
-        <div class="slide" id="slide-7">
-            <h1 class="slide-title">6️⃣ Angular & Node (متقدم)</h1>
+        <!-- Slide 8: Backend Context & MEAN -->
+        <div class="slide" id="slide-8">
+            <h1 class="slide-title">6️⃣ الباك إند وتراك الـ MEAN</h1>
             
             <div class="explanation-card">
-                <h3>💡 الشرح بالبلدي:</h3>
-                <p>أنجولار بيقسم الموقع لـ Components (مكعبات) وبيخلي الموقع (SPA) يعني صفحة واحدة مابتفصلش. و Node.js بيخلينا نعمل سيرفر قوي وسريع.</p>
-            </div>
-            
-            <div class="questions-section">
-                <h3>🎯 أسئلة للمستوى المتقدم:</h3>
-                <div class="qa-box">
-                    <div class="q-text">❓ إزاي بتعالج الـ Performance لو الداتا كبيرة في Angular؟</div>
-                    <div class="a-text">بستخدم حاجات زي الـ <span class="highlight">Lazy Loading</span> (تحميل الصفحات وقت الحاجة بس) وبظبط الـ Change Detection.</div>
-                </div>
-                <div class="qa-box">
-                    <div class="q-text">❓ إزاي نعالج مشكلة بطء السيرفر (Node.js) وقت الضغط؟</div>
-                    <div class="a-text">عن طريق استخدام <span class="highlight">Caching</span> (زي Redis) عشان نحفظ الداتا المتكررة، ونعمل Load Balancing لتوزيع الضغط.</div>
-                </div>
+                <h3>💡 الشرح بالبلدي (لغات الباك إند):</h3>
+                <p>الباك إند هو "مطبخ المطعم"، اللي بيكلم الداتا بيز. زمان كان لازم نكتبه بلغات مختلفة زي:</p>
+                <ul style="margin-right: 20px; color: #cbd5e1; list-style-type: disc; margin-bottom: 10px;">
+                    <li><strong>PHP:</strong> لغة قديمة ومشهورة جداً (شغال بيها ووردبريس).</li>
+                    <li><strong>Python:</strong> لغة قوية في التعامل مع الداتا والذكاء الاصطناعي (Django/Flask).</li>
+                    <li><strong>Java / C#:</strong> للأنظمة البنكية والشركات الضخمة.</li>
+                </ul>
+                <p style="color:#10b981; font-weight: bold;">بس إحنا في تراك (MEAN) بنعمل اختراع!</p>
+                <p>بنستخدم <span class="highlight">Node.js</span>، وده بيخلينا نكتب المطبخ (الباك إند) بنفس لغة الفرونت إند (JavaScript)، فالمبرمج بيبقى فول ستاك بلغة واحدة بس.</p>
+                <p style="margin-top: 10px;">الـ MEAN اختصار لـ: <strong>M</strong>ongoDB (الداتا بيز) + <strong>E</strong>xpress (لتسهيل الباك) + <strong>A</strong>ngular (للفرونت) + <strong>N</strong>ode.js (بيئة التشغيل).</p>
             </div>
         </div>
 
-        <!-- Slide 8: Database & OOP -->
-        <div class="slide" id="slide-8">
+        <!-- Slide 9: Database & OOP -->
+        <div class="slide" id="slide-9">
             <h1 class="slide-title">7️⃣ الداتا بيز (MongoDB) و الـ OOP</h1>
             
             <div class="explanation-card">
                 <h3>💡 الشرح بالبلدي:</h3>
-                <p>MongoDB قاعدة بيانات NoSQL ذكية جداً ومرنة، بتحفظ الداتا كأنها ملفات (Documents) مش جداول معقدة.</p>
+                <p>MongoDB قاعدة بيانات NoSQL ذكية جداً ومرنة، بتحفظ الداتا كأنها ملفات (JSON Documents) مش في جداول (Tables) معقدة زي قواعد بيانات الـ SQL القديمة.</p>
             </div>
             
             <div class="questions-section">
-                <h3>🎯 أسئلة الإنترفيو:</h3>
+                <h3>🎯 أسئلة الإنترفيو المتسربة:</h3>
                 <div class="qa-box">
                     <div class="q-text">❓ اتسألت في الـ OOP، يعني إيه؟ <span class="real-q-badge">مُسرب</span></div>
-                    <div class="a-text">Object-Oriented Programming (البرمجة الكائنية): بنظم كودي في شكل (Classes) و (Objects). أهم مبادئها: الوراثة (Inheritance)، التغليف (Encapsulation)، وتعدد الأشكال (Polymorphism). ده بيخلي الكود منظم وسهل يتعدل.</div>
-                </div>
-                <div class="qa-box">
-                    <div class="q-text">❓ إيه الفرق بين SQL و NoSQL؟ <span class="real-q-badge">مُسرب</span></div>
-                    <div class="a-text"><span class="highlight">SQL:</span> جداول ثابتة ومترابطة (Relational).<br><span class="highlight">NoSQL (MongoDB):</span> ملفات مرنة (Documents) سريعة التوسع.</div>
+                    <div class="a-text">Object-Oriented Programming (البرمجة الكائنية): بنظم كودي في شكل (Classes) و (Objects) عشان ماكررش الكود. أهم مبادئها: الوراثة (Inheritance)، التغليف (Encapsulation)، وتعدد الأشكال (Polymorphism). ومهمة جداً عشان Angular بيشتغل بـ TypeScript المبنية ع الـ OOP.</div>
                 </div>
             </div>
         </div>
 
-        <!-- Slide 9: Back-end Details & Security -->
-        <div class="slide" id="slide-9">
-            <h1 class="slide-title">8️⃣ الباك إند (الأمان والتفاصيل)</h1>
-            
-            <div class="explanation-card">
-                <h3>💡 الشرح بالبلدي:</h3>
-                <p>الباك إند هو "مطبخ المطعم". بيستقبل الطلب (Request)، يكلم الداتا بيز، ويرجع الرد. ولازم المطبخ ده يكون متأمن كويس!</p>
-            </div>
+        <!-- Slide 10: Security & Performance -->
+        <div class="slide" id="slide-10">
+            <h1 class="slide-title">8️⃣ الأمان والأداء (مستوى متقدم)</h1>
             
             <div class="questions-section">
-                <h3>🎯 أسئلة الإنترفيو:</h3>
+                <h3>🎯 أسئلة الإنترفيو المتقدمة:</h3>
                 <div class="qa-box">
                     <div class="q-text">❓ إزاي بتأمن الأبلكيشن بتاعك؟ (Security)</div>
-                    <div class="a-text">بشفر الباسوردات بـ (Bcrypt)، وبستخدم <span class="highlight">JWT Token</span> للـ Login، وبعمل Validation لأي داتا جيالي من الفرونت إند عشان أمنع الهاكرز.</div>
+                    <div class="a-text">بشفر الباسوردات بـمكتبة (Bcrypt) في Node.js، وبستخدم <span class="highlight">JWT Token</span> عشان أخلي الـ Login آمن، ولازم أعمل Validation (تأكيد صحة الداتا) في الفرونت والباك عشان أمنع أي محاولة هاكينج.</div>
                 </div>
                 <div class="qa-box">
-                    <div class="q-text">❓ إيه هو الـ DOM؟ <span class="real-q-badge">مُسرب</span></div>
-                    <div class="a-text">الـ Document Object Model. هو الشجرة اللي البراوزر بيبنيها لملف الـ HTML، وعن طريق الـ JS بنقدر نمسك فروع الشجرة دي (العناصر) ونغير ألوانها أو محتواها.</div>
+                    <div class="q-text">❓ إزاي نعالج مشكلة بطء السيرفر (Node.js) وقت الضغط العالي؟</div>
+                    <div class="a-text">عن طريق استخدام <span class="highlight">Caching</span> (تخزين مؤقت) زي Redis عشان نحفظ الداتا المتكررة بدل ما نكلم الداتابيز كل شوية، وممكن نعمل Load Balancing لتوزيع الضغط على كذا سيرفر.</div>
+                </div>
+                <div class="qa-box">
+                    <div class="q-text">❓ إزاي بتعالج الـ Performance في Angular؟</div>
+                    <div class="a-text">باستخدام الـ <span class="highlight">Lazy Loading</span> (تحميل صفحات الموقع وقت الحاجة ليها بس مش كلها مرة واحدة) وضبط استراتيجية الـ Change Detection.</div>
                 </div>
             </div>
         </div>
 
-        <!-- Slide 10: Outro & Tips -->
-        <div class="slide" id="slide-10" style="justify-content: center; text-align: center;">
+        <!-- Slide 11: Outro & Tips -->
+        <div class="slide" id="slide-11" style="justify-content: center; text-align: center;">
             <h1 style="font-size: clamp(2rem, 5vw, 3rem); color: #10b981; margin-bottom: 20px;">نصيحة أخيرة للإنترفيو 💡</h1>
             
             <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px; max-width: 700px; text-align: right; margin-top: 20px;">
                 <ul style="color: #cbd5e1; font-size: 1.2rem; line-height: 1.8; list-style: none; padding:0;">
-                    <li style="margin-bottom: 10px;">✅ <strong>محدش طالب إجابة نموذجية:</strong> زي ما الباشمهندس قال في الكومنتات، المهم تبين إنك فاهم وإيدك مشيت في الكود.</li>
-                    <li style="margin-bottom: 10px;">✅ <strong>الأسئلة بتختلف:</strong> الإنترفيور ممكن يسألك حسب كلامك معاه وحسب مستواك (Dynamic).</li>
-                    <li style="margin-bottom: 10px;">✅ <strong>أهم حاجة الـ JS:</strong> المنحة دي مبنية على الجافاسكريبت، ركز جداً في أساسياتها ومفاهيمها.</li>
-                    <li>✅ <strong>لو مش عارف سؤال:</strong> قول عادي "أنا اتعاملت معاها بس مش متذكر التفصيل بالظبط، ومتحمس أتعلمها أكتر في المنحة".</li>
+                    <li style="margin-bottom: 10px;">✅ <strong>محدش طالب إجابة نموذجية:</strong> زي ما الناس قالت في الجروبات، المهم تبين إنك فاهم وإيدك مشيت في الكود.</li>
+                    <li style="margin-bottom: 10px;">✅ <strong>الأسئلة بتختلف (Dynamic):</strong> الإنترفيور ممكن يسألك حسب كلامك معاه ومستواك.</li>
+                    <li style="margin-bottom: 10px;">✅ <strong>أهم حاجة الـ JS:</strong> التراك مبني عليها، راجع بنك أسئلة الـ JS (سلايد 5 و 6) كويس جداً.</li>
+                    <li>✅ <strong>لو مش عارف سؤال:</strong> قول بكل ثقة "أنا اتعاملت معاها بس مش متذكر التفصيل بالظبط، ومتحمس أتعلمها بتعمق في المنحة".</li>
                 </ul>
             </div>
         </div>
@@ -354,14 +416,14 @@
         <!-- Navigation Controls -->
         <div class="controls">
             <button id="prevBtn" onclick="changeSlide(-1)" disabled>السابق</button>
-            <span id="slideCounter" style="color: #94a3b8; font-weight: bold; font-size: 1.1rem;">1 / 10</span>
+            <span id="slideCounter" style="color: #94a3b8; font-weight: bold; font-size: 1.1rem;">1 / 11</span>
             <button id="nextBtn" onclick="changeSlide(1)">التالي</button>
         </div>
     </div>
 
     <script>
         let currentSlide = 1;
-        const totalSlides = 10;
+        const totalSlides = 11;
 
         function changeSlide(direction) {
             document.getElementById(`slide-${currentSlide}`).classList.remove('active');
